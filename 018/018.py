@@ -3,7 +3,7 @@
 '''
 author="heathu"
 time=20180411
-#第 0017 题：** 将 第 0014 题中的 student.xls 文件中的内容写到 student.xml 文件中，如
+#将 第 0015 题中的 city.xls 文件中的内容写到 city.xml 文件中，如下所示
 '''
 import xlrd
 import json
@@ -19,13 +19,13 @@ def read_excel(file_name):
 
 def save_xml(data,xml_name):
     root = etree.Element('root')
-    students = etree.SubElement(root,'student')
-    students.text = data
-    students.extend(etree.Comment("""学生信息表 \n"id" : [名字，数学，语文，英语]"""))
-    student_xml = etree.ElementTree(root)
-    student_xml.write(xml_name,pretty_print=True,xml_declaration=True,encoding='utf-8')
+    citys = etree.SubElement(root,'citys')
+    citys.text = data
+    citys.append(etree.Comment("""城市信息"""))
+    citys_xml = etree.ElementTree(root)
+    citys_xml.write(xml_name,pretty_print=True,xml_declaration=True,encoding='utf-8')
 
 if __name__=="__main__":
-    data = read_excel('./student.xls')
+    data = read_excel('./citys.xls')
     print(data)
-    save_xml(data,'./student.xml')
+    save_xml(data,'./citys.xml')
